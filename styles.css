@@ -108,7 +108,9 @@
  .mealitem {
      display: flex;
      flex-wrap: wrap;
-     width: 98%;
+     align-items: center;
+     justify-content: center;
+     width: 95%;
      margin-left: 2%;
      margin-top: 5rem;
      backdrop-filter: blur(2px);
@@ -120,6 +122,10 @@
  
  .card-title {
      color: white;
+ }
+ 
+ .card {
+     width: 250px;
  }
  
  ul {
@@ -189,9 +195,10 @@
      }
      .d-block {
          height: 150px;
+         margin-top: 10px;
      }
      input {
-         width: 300px;
+         width: 350px;
      }
      #list img {
          width: 50px;
@@ -207,5 +214,8 @@
      #list li label div {
          float: left;
          left: 10px;
+     }
+     .card {
+         width: 150px;
      }
  }

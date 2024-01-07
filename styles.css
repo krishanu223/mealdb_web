@@ -185,7 +185,7 @@
          visibility: hidden;
      }
      .searchbar {
-         margin-left: -150px;
+         margin-left: 2px;
      }
      input {
          width: 300px;

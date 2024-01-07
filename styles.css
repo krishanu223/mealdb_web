@@ -200,21 +200,6 @@
      input {
          width: 300px;
      }
-     #list img {
-         width: 50px;
-         height: 3rem;
-     }
-     ul {
-         font-size: 13px;
-     }
-     #list li label {
-         font-size: 10px;
-         height: 3rem;
-     }
-     #list li label div {
-         float: left;
-         left: 10px;
-     }
      .card {
          width: 150px;
      }

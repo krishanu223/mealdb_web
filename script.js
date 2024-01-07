@@ -1,11 +1,25 @@
 let favi = document.querySelector('.fav');
 let fi = document.getElementById('fab');
 let cl = document.getElementById('close');
-fi.addEventListener('click', showfav);
-cl.addEventListener('click', closefav);
+
+if (window.innerWidth < 768) {
+    fi.addEventListener('click', showfav);
+    cl.addEventListener('click', closefav);
+} else {
+    fi.addEventListener('click', showfavb);
+    cl.addEventListener('click', closefavb);
+}
+
+function showfavb() {
+    favi.style = 'visibility:visible;right:0px;width:30%';
+}
+
+function closefavb() {
+    favi.style = 'visibility:visible;right:-220px;width:0';
+}
 
 function showfav() {
-    favi.style = 'visibility:visible;right:0px;width:30%';
+    favi.style = 'visibility:visible;right:0px;width:70%';
 }
 
 function closefav() {

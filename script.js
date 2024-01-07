@@ -15,7 +15,7 @@ function showfavb() {
 }
 
 function closefavb() {
-    favi.style = 'visibility:visible;right:-220px;width:0';
+    favi.style = 'visibility:visible;right:-0px;width:0';
 }
 
 function showfav() {
@@ -23,7 +23,7 @@ function showfav() {
 }
 
 function closefav() {
-    favi.style = 'visibility:visible;right:-220px;width:0';
+    favi.style = 'visibility:visible;right:-0px;width:0';
 }
 
 

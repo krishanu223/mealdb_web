@@ -1,0 +1,208 @@
+ * {
+     padding: 0;
+     margin: 0;
+     box-sizing: border-box;
+     overflow-x: hidden;
+ }
+ 
+ *:focus {
+     outline: none;
+ }
+ 
+ header {
+     width: 100%;
+     height: 60px;
+     background-color: rgb(33, 33, 33);
+     box-shadow: 0 1px 10px 2px rgb(255, 149, 0);
+     display: flex;
+     flex-wrap: wrap;
+     z-index: 1;
+     overflow-y: hidden;
+ }
+ 
+ .logo {
+     color: #ff0000;
+     font-size: 17px;
+     margin-top: 10px;
+     margin-left: 10px;
+     display: block;
+     overflow-y: hidden;
+ }
+ 
+ .logo,
+ h1 {
+     font-family: 'Satisfy', cursive;
+     overflow-y: hidden;
+ }
+ 
+ .searchbar {
+     margin-top: 10px;
+     margin-left: 100px;
+     display: block;
+     overflow-y: hidden;
+ }
+ 
+ input {
+     width: 400px;
+     height: 40px;
+     border-radius: 25px;
+     font-size: 15px;
+     padding-left: 10px;
+     font-size: 20px;
+     overflow-y: hidden;
+ }
+ 
+ #sic {
+     margin-top: 15px;
+     font-size: 30px;
+     color: #c9c9c9;
+     margin-left: -40px;
+     z-index: 0;
+ }
+ 
+ #fab {
+     font-size: 30px;
+     color: #ff1900;
+     margin-top: 15px;
+     z-index: 0;
+     margin-left: 30px;
+     cursor: pointer;
+ }
+ 
+ .fav {
+     position: absolute;
+     visibility: hidden;
+     float: right;
+     margin-right: 0px;
+     right: -220;
+     height: 100vh;
+     width: 0;
+     background-image: url('https://img.freepik.com/premium-vector/doodle-style-illustration-with-food-cooking-utensil-seamless-pattern-with-different-symbols_75047-68.jpg');
+     z-index: 12;
+     transition: all 500ms ease-in-out;
+     box-shadow: 2px 0px 10px 5px orange;
+ }
+ 
+ #close {
+     z-index: 14;
+     color: #ff0000;
+     font-size: 40px;
+     text-shadow: 2px 2px 10px white;
+     padding: 5px;
+     cursor: pointer;
+     overflow-y: hidden;
+ }
+ 
+ body {
+     background-image: url('backgr.jpg');
+     background-repeat: no-repeat;
+     background-size: cover;
+     background-attachment: fixed;
+ }
+ 
+ .d-block {
+     height: 400px;
+     margin-top: 50px;
+ }
+ 
+ .mealitem {
+     display: flex;
+     flex-wrap: wrap;
+     width: 98%;
+     margin-left: 2%;
+     margin-top: 5rem;
+     backdrop-filter: blur(2px);
+ }
+ 
+ .card-body {
+     background-image: linear-gradient(rgb(0, 0, 0), rgb(255, 255, 255));
+ }
+ 
+ .card-title {
+     color: white;
+ }
+ 
+ ul {
+     font-size: 20px;
+     padding: 2px;
+ }
+ 
+ li {
+     width: 98%;
+     height: 5rem;
+     backdrop-filter: blur(3px);
+     border-radius: 10px;
+     margin-top: 10px;
+ }
+ 
+ #list img {
+     position: absolute;
+     width: 80px;
+     height: 4.5rem;
+     margin-top: 3px;
+     margin-left: 3px;
+     border-radius: 50%;
+     display: inline;
+     overflow-y: hidden;
+ }
+ 
+ #list li label {
+     color: rgb(255, 255, 255);
+     font-weight: 600;
+     width: 60%;
+     height: 5rem;
+     background-color: #ff0000;
+     position: relative;
+     display: block;
+     left: 85px;
+     font-size: 15px;
+     padding: 2px;
+     overflow-y: hidden;
+ }
+ 
+ #list li label div {
+     margin-top: 10px;
+     float: right;
+     margin-right: 10px;
+     margin-top: 32px;
+     width: 20px;
+     height: 20px;
+     background-color: white;
+     border-radius: 50%;
+     overflow: hidden;
+     cursor: pointer;
+ }
+ 
+ #blure {
+     width: 98%;
+     position: absolute;
+     height: max-content;
+     backdrop-filter: blur(5px);
+ }
+ 
+ @media only screen and (max-width: 772px) {
+     .logo {
+         visibility: hidden;
+     }
+     .searchbar {
+         margin-left: -180px;
+     }
+     input {
+         width: 300px;
+     }
+     #list img {
+         width: 50px;
+         height: 3rem;
+     }
+     ul {
+         font-size: 13px;
+     }
+     #list li label {
+         font-size: 10px;
+         height: 3rem;
+     }
+     #list li label div {
+         float: left;
+         left: 10px;
+     }
+ }

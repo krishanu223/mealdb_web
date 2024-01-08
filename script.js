@@ -84,7 +84,7 @@ async function fetchmeal() {
         }" alt="Card image cap "><div class="card-body ">
         <h5 class="card-title " style="overflow-y: hidden; ">${task.strMeal.slice(0,20)}
         </h5>
-        <a href="# " class="btn btn-primary but" id="${task.idMeal}">Add favorite</a>
+        <a  class="btn btn-primary but" id="${task.idMeal}">Add favorite</a>
     </div>`
         itemlist.append(mealiitem);
     }

@@ -126,6 +126,7 @@
  
  .card {
      width: 250px;
+     height: 350px;
  }
  
  ul {
@@ -202,6 +203,7 @@
      }
      .card {
          width: 150px;
+         height: 280px;
      }
      .mealitem {
          margin-top: 2rem;

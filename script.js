@@ -1,3 +1,5 @@
+var favlistitem = [];
+let favvlist = document.getElementById('list')
 let favi = document.querySelector('.fav');
 let fi = document.getElementById('fab');
 let cl = document.getElementById('close');
@@ -5,6 +7,39 @@ let itemlist = document.querySelector('.mealitem');
 let search = document.querySelector('.inp');
 let serchbtn = document.getElementById('sic');
 let si;
+document.addEventListener('click', clickhandle);
+
+function clickhandle(e) {
+    if (e.target.className ==
+        "btn btn-primary but") {
+        // favlistitem.push(e.target.id);
+        fetching(e)
+    }
+}
+
+async function fetching(e) {
+    const data = await fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${e.target.id}`);
+    const res = await data.json();
+    favlistitem.push(res);
+    renderfavlist()
+
+}
+
+function addfavtodomfav(task) {
+    const li = document.createElement('li');
+    li.innerHTML = `<img src="${task.meals[0].strMealThumb}" alt="slow">
+    <label>${task.meals[0].strMeal.slice(0,20)}
+    <div ><i class="material-icons" style="color:red;font-size: 20px; font-weight: 500;">close</i></div>
+</label>`
+    favvlist.append(li);
+}
+
+function renderfavlist() {
+    favvlist.innerHTML = "";
+    for (let i = 0; i < favlistitem.length; i++) {
+        addfavtodomfav(favlistitem[i])
+    }
+}
 serchbtn.addEventListener('click', serc);
 window.onload = function random() {
     si = "bghdhhgf";
@@ -49,7 +84,7 @@ async function fetchmeal() {
         }" alt="Card image cap "><div class="card-body ">
         <h5 class="card-title " style="overflow-y: hidden; ">${task.strMeal.slice(0,20)}
         </h5>
-        <a href="# " class="btn btn-primary " id="btu ">Add favorite</a>
+        <a href="# " class="btn btn-primary but" id="${task.idMeal}">Add favorite</a>
     </div>`
         itemlist.append(mealiitem);
     }
@@ -58,12 +93,11 @@ async function fetchmeal() {
         itemlist.innerHTML = "";
         for (let i = 0; i < iteamlist.length; i++) {
             addtasksTodom(iteamlist[i])
-            console.log(i)
+
         }
     }
     renderList()
 }
-
 
 function serc() {
     if (search) {

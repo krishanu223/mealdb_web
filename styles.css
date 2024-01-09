@@ -233,4 +233,8 @@
      .mealitem {
          margin-top: 2rem;
      }
+     #fab {
+         font-size: 30px;
+         margin-left: 10px;
+     }
  }

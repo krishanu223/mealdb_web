@@ -7,18 +7,27 @@ let cl = document.getElementById('close');
 let itemlist = document.querySelector('.mealitem');
 let search = document.querySelector('.inp');
 let serchbtn = document.getElementById('sic');
+let favc = document.querySelector('.favcount');
+let secresult = document.querySelector('.result');
 let si;
 let ind;
+let favcounter = 1;
 document.addEventListener('click', clickhandle);
 
 function clickhandle(e) {
     if (e.target.className ==
         "btn btn-primary but") {
         fetching(e)
+        favcounter = favlistitem.length;
+        favc.innerHTML = favcounter + 1;
+
     }
     if (e.target.className == "material-icons") {
         deleteTask(e.target.id);
         renderfavlist();
+        favcounter = favlistitem.length;
+        favc.innerHTML = favcounter;
+
     }
 }
 
@@ -120,5 +129,6 @@ function serc() {
     if (search) {
         si = search.value;
         fetchmeal();
+        secresult.innerHTML = `<h2>Your search reasult for ${search.value}(${iteamlist.length} items)<h2>`
     }
 }

@@ -1,4 +1,5 @@
 var favlistitem = [];
+var favarray = [];
 let favvlist = document.getElementById('list')
 let favi = document.querySelector('.fav');
 let fi = document.getElementById('fab');
@@ -7,29 +8,42 @@ let itemlist = document.querySelector('.mealitem');
 let search = document.querySelector('.inp');
 let serchbtn = document.getElementById('sic');
 let si;
+let ind;
 document.addEventListener('click', clickhandle);
 
 function clickhandle(e) {
     if (e.target.className ==
         "btn btn-primary but") {
-        // favlistitem.push(e.target.id);
         fetching(e)
+    }
+    if (e.target.className == "material-icons") {
+        deleteTask(e.target.id);
+        renderfavlist();
     }
 }
 
 async function fetching(e) {
     const data = await fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${e.target.id}`);
     const res = await data.json();
-    favlistitem.push(res);
+    favlistitem.push(res.meals[0]);
     renderfavlist()
 
 }
 
+function deleteTask(taskId) {
+    const newtask = favlistitem.filter((meals) => {
+        return meals.idMeal !== taskId;
+    })
+    favlistitem = newtask;
+
+}
+
+
 function addfavtodomfav(task) {
     const li = document.createElement('li');
-    li.innerHTML = `<img src="${task.meals[0].strMealThumb}" alt="slow">
-    <label>${task.meals[0].strMeal.slice(0,20)}
-    <div ><i class="material-icons" style="color:red;font-size: 20px; font-weight: 500;">close</i></div>
+    li.innerHTML = `<img src="${task.strMealThumb}" alt="slow">
+    <label>${task.strMeal.slice(0,20)}
+    <div ><i class="material-icons" id="${task.idMeal}" style="color:red;font-size: 20px; font-weight: 500;">close</i></div>
 </label>`
     favvlist.append(li);
 }
@@ -38,8 +52,11 @@ function renderfavlist() {
     favvlist.innerHTML = "";
     for (let i = 0; i < favlistitem.length; i++) {
         addfavtodomfav(favlistitem[i])
+
     }
 }
+
+
 serchbtn.addEventListener('click', serc);
 window.onload = function random() {
     si = "bghdhhgf";

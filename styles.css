@@ -205,11 +205,116 @@
      cursor: pointer;
  }
  
+ #closed {
+     z-index: 14;
+     color: #ff0000;
+     font-size: 40px;
+     text-shadow: 2px 2px 10px white;
+     padding: 5px;
+     cursor: pointer;
+     overflow-y: hidden;
+ }
+ 
+ .detail {
+     width: 80%;
+     height: 80vh;
+     position: fixed;
+     background-color: black;
+     z-index: 12;
+     display: flex;
+     flex-wrap: wrap;
+     left: 10%;
+     border-radius: 15px;
+     overflow: hidden;
+     transition: all 300ms linear;
+     visibility: hidden;
+ }
+ 
+ .details {
+     float: right;
+     position: absolute;
+     left: 95%;
+     overflow: hidden;
+ }
+ 
+ .detail img {
+     width: 45%;
+     height: 100%;
+ }
+ /* .detail h2 {
+     color: #f2ee9c;
+     margin-left: 5px;
+     margin-top: 10px;
+     display: block;
+ } */
+ 
+ #artical {
+     color: white;
+     position: absolute;
+     width: 53%;
+     height: 40%;
+     display: flex;
+     flex-wrap: wrap;
+     left: 45%;
+     top: 60%;
+     margin-left: 10px;
+ }
+ 
+ #ins h3 {
+     color: rgb(165, 177, 0);
+     overflow: hidden;
+     position: absolute;
+     left: 45%;
+     top: 50%;
+ }
+ 
+ #dheading {
+     display: flex;
+     flex-wrap: wrap;
+ }
+ 
+ #dheading h3 {
+     overflow: hidden;
+     color: #f2ee9c;
+     margin-left: 10px;
+ }
+ 
+ #cat h5 {
+     display: block;
+     margin-top: 40px;
+     color: #f2ee9c;
+     position: absolute;
+     left: 45%;
+     overflow: hidden;
+     margin-left: 10px;
+ }
+ 
  #blure {
      width: 98%;
      position: absolute;
      height: max-content;
      backdrop-filter: blur(5px);
+ }
+ 
+ #recipi h4 {
+     overflow: hidden;
+ }
+ 
+ #recipi {
+     width: 53%;
+     height: 180px;
+     position: absolute;
+     top: 15%;
+     left: 45%;
+     margin-left: 10px;
+     color: aliceblue;
+     font-size: 12px;
+ }
+ 
+ .youbut {
+     width: 50px;
+     background-color: red;
+     border: none;
  }
  
  @media only screen and (max-width: 772px) {
@@ -236,5 +341,82 @@
      #fab {
          font-size: 30px;
          margin-left: 10px;
+     }
+ }
+ 
+ @media screen and(max-width:780) {
+     #dheading h2 {
+         font-size: 10px;
+     }
+ }
+ 
+ @media only screen and (max-width: 480px) {
+     .detail {
+         height: 60vh;
+     }
+     .detail img {
+         width: 40%;
+         height: 30%;
+         border-radius: 50%;
+         margin-top: 20%;
+         margin-left: 10px;
+     }
+     #artical {
+         width: 90%;
+         height: 40%;
+         top: 60%;
+         left: 0%;
+     }
+     #ins h3 {
+         left: 10px;
+     }
+     #closed {
+         margin-left: -20px;
+     }
+     #dheading {
+         color: #f2ee9c;
+         margin-left: 10px;
+         margin-top: -85%;
+         display: flex;
+         flex-wrap: wrap;
+     }
+     #cat h5 {
+         position: absolute;
+         left: 45%;
+         margin-left: 10px;
+         top: 0px;
+     }
+     #recipi {
+         width: 53%;
+         height: 150px;
+         position: absolute;
+         top: 19%;
+         left: 45%;
+         margin-left: 10px;
+         color: aliceblue;
+         font-size: 12px;
+     }
+ }
+ 
+ @media only screen and (max-width: 457px) {
+     .detail img {
+         width: 35%;
+         height: 20%;
+         margin-top: 130px;
+     }
+     #cat h5 {
+         left: 5%;
+         top: -30px;
+     }
+     #dheading {
+         margin-left: 10px;
+         margin-top: -95%;
+     }
+     .youbut {
+         margin-top: 2px;
+         height: 30px;
+     }
+     #closed {
+         margin-left: -25px;
      }
  }

@@ -80,13 +80,13 @@ function clickhandle(e) {
 
     if (e.target.className == "material-icons") {
         deleteTask(e.target.id);
-        favcounter = products.length;
-        favc.innerHTML = favcounter;
         deleteaddProduct(e)
         renderfavlist();
+        favcounter = products.length;
+        favc.innerHTML = favcounter;
 
     }
-    if (e.target.className == "card-img-top ") {
+    if (e.target.className == "card-img-top " || e.target.className == "card-title  deta") {
         pop.style = "visibility:visible;opacity:1";
         fetchdetail(e);
 
@@ -209,22 +209,16 @@ function showfavb() {
     renderfavlist();
     dupchk();
 
-
-
 }
 
 function closefavb() {
     favi.style = 'visibility:visible;right:-0px;width:0';
-
 
 }
 
 function showfav(e) {
     favi.style = 'visibility:visible;right:0px;width:70%';
     renderfavlist();
-
-
-
 
 }
 
@@ -245,8 +239,10 @@ async function fetchmeal() {
         }" alt="Card image cap "><div class="card-body ">
         <h5 class="card-title " style="overflow-y: hidden; ">${task.strMeal.slice(0,20)}
         </h5>
+         <a  class="card-title  deta">Dtails</a>
         <a  class="btn btn-primary but" id="${task.idMeal}">Add favorite</a>
         <a href="${task.strYoutube}" class="btn btn-primary youbut">YT</a>
+      
         
     </div>`
         itemlist.append(mealiitem);

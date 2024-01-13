@@ -24,10 +24,7 @@ document.addEventListener('click', clickhandle);
 async function fetching(i) {
     const res = await fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${products[i]}`);
     const data = await res.json();
-
     favlistitem.push(data.meals[0]);
-
-
 }
 /************************** end fetching data from local storage to api************** */
 function addProduct(e) {
@@ -63,24 +60,22 @@ window.addEventListener('load', (e) => {
     favc.innerHTML = products.length;
 });
 async function currentfetch(e) {
-    const data = await fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${e.target.id}`)
+    const data = await fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${e.target.id}`);
     const res = await data.json();
+    fav.push(res.meals[0]);
 
-    favlistitem.push(res.meals[0]);
 }
 
 
 function clickhandle(e) {
     if (e.target.className ==
         "btn btn-primary but") {
-        console.log(e.target.id);
+        console.log(favlistitem);
+        currentfetch(e);
         addProduct(e);
-        currentfetch(e)
-        renderfavlist();
         dupchk();
         favc.innerHTML = products.length;
     }
-
 
 
     if (e.target.className == "material-icons") {
@@ -100,16 +95,16 @@ function clickhandle(e) {
         pop.style = "visibility:hidden;opacity:0";
     }
     if (e.target.className == "material-icons oo") {
-        renderfavlist();
+        addProduct(e);
         dupchk();
+        renderfavlist();
+        console.log(favlistitem.length)
     }
 }
 async function fetchdetail(e) {
     const data = await fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${e.target.id}`);
     const res = await data.json();
     detaildom(res.meals[0]);
-
-
 }
 
 function detaildom(task) {
@@ -157,6 +152,7 @@ function deleteTask(taskId) {
         return meals.idMeal !== taskId;
     })
     fav = newtask;
+
 
 }
 /******************************************Favlist operation****************************/
@@ -208,7 +204,7 @@ function dupchk() {
     }
 }
 
-function showfavb(e) {
+function showfavb() {
     favi.style = 'visibility:visible;right:0px;width:30%';
     renderfavlist();
     dupchk();
@@ -219,7 +215,7 @@ function showfavb(e) {
 
 function closefavb() {
     favi.style = 'visibility:visible;right:-0px;width:0';
-    dupchk();
+
 
 }
 

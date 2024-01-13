@@ -1,0 +1,7 @@
+{
+  "liveServer.settings.port": 5501,
+  "editor.formatOnSave": true,
+  "editor.formatOnPaste": true,
+  "diffEditor.codeLens": true,
+  "diffEditor.diffAlgorithm": "legacy"
+}

@@ -62,7 +62,8 @@ window.addEventListener('load', (e) => {
 async function currentfetch(e) {
     const data = await fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${e.target.id}`);
     const res = await data.json();
-    fav.push(res.meals[0]);
+
+    favlistitem.push(res.meals[0]);
 
 }
 
@@ -70,10 +71,10 @@ async function currentfetch(e) {
 function clickhandle(e) {
     if (e.target.className ==
         "btn btn-primary but") {
-        console.log(favlistitem);
         currentfetch(e);
         addProduct(e);
         dupchk();
+        console.log(fav);
         favc.innerHTML = products.length;
     }
 
@@ -168,7 +169,7 @@ function addfavtodomfav(task) {
 
 function renderfavlist() {
     favvlist.innerHTML = "";
-    for (let i = 0; i < fav.length; i++) {
+    for (let i = 0; i <= fav.length; i++) {
         addfavtodomfav(fav[i])
 
     }
@@ -219,7 +220,7 @@ function closefavb() {
 function showfav(e) {
     favi.style = 'visibility:visible;right:0px;width:70%';
     renderfavlist();
-
+    dupchk();
 }
 
 function closefav() {

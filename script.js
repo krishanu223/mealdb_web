@@ -19,8 +19,60 @@ let products = [];
 let i = 0;
 let fav = [];
 let chk = {};
+let sus = []
+let susgeslist = document.querySelector('.sugestionlist')
+let sugestn = document.querySelector('.sugestion')
 document.addEventListener('click', clickhandle);
 /***************************************fetching data from local storage to api************** */
+
+susgeslist.addEventListener('click', function(e) {
+    search.value = e.target.innerHTML;
+    console.log(e.target.innerHTML)
+    susgeslist.innerHTML = ""
+    serc();
+    sugestn.style.opacity = '0';
+
+
+})
+search.addEventListener('keyup', () => {
+    sugestn.style.opacity = '1';
+
+    function domli(task) {
+        const li = document.createElement('li')
+        li.innerHTML = `${ task.strMeal }`
+        susgeslist.append(li)
+    }
+
+    function rendersuslist() {
+        susgeslist.innerHTML = "";
+        for (let i = 0; i < sus.length; i++) {
+            domli(sus[i])
+        }
+    }
+
+    sugestion(search.value)
+    async function sugestion(i) {
+        const res = await fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${i}`);
+        const data = await res.json();
+        sus = data.meals;
+        rendersuslist();
+
+        if (search.value) {
+            if (sus.length != 0) {
+                sugestn.style.visibility = 'visible'
+            } else {
+                sugestn.style.visibility = 'hidden'
+            }
+        } else {
+            serc();
+            sugestn.style.visibility = 'hidden'
+
+        }
+
+    }
+
+})
+
 async function fetching(i) {
     const res = await fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${products[i]}`);
     const data = await res.json();
@@ -65,6 +117,7 @@ async function currentfetch(e) {
 
     favlistitem.push(res.meals[0]);
 
+
 }
 
 
@@ -77,7 +130,6 @@ function clickhandle(e) {
         console.log(fav);
         favc.innerHTML = products.length;
     }
-
 
     if (e.target.className == "material-icons") {
         deleteTask(e.target.id);
@@ -260,6 +312,7 @@ async function fetchmeal() {
 }
 
 function serc() {
+
     if (search) {
         si = search.value;
         fetchmeal();

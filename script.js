@@ -119,7 +119,9 @@ async function currentfetch(e) {
 
 
 }
-
+document.addEventListener("click", (e) => {
+    console.log(e.target)
+})
 
 function clickhandle(e) {
     if (e.target.className ==
@@ -129,6 +131,7 @@ function clickhandle(e) {
         dupchk();
         console.log(fav);
         favc.innerHTML = products.length;
+
     }
 
     if (e.target.className == "material-icons") {
@@ -139,9 +142,9 @@ function clickhandle(e) {
         favc.innerHTML = favcounter;
 
     }
-    if (e.target.className == "card-img-top " || e.target.className == "card-title  deta") {
-        pop.style = "visibility:visible;opacity:1";
+    if (e.target.className == "card-img-top ") {
         fetchdetail(e);
+        pop.style = "visibility:visible;opacity:1";
 
     }
     if (e.target.className == " details material-icons ") {
@@ -289,10 +292,10 @@ async function fetchmeal() {
         const mealiitem = document.createElement('div');
         mealiitem.classList.add('card', 'm-2');
         mealiitem.innerHTML = `<img class="card-img-top " id=${task.idMeal} src="${task.strMealThumb
-        }" alt="Card image cap "><div class="card-body ">
+        }" alt="Card image cap " ><div class="card-body ">
         <h5 class="card-title " style="overflow-y: hidden; ">${task.strMeal.slice(0,20)}
         </h5>
-         <a  class="card-title  deta">Dtails</a>
+        <a class="card-img-top " id=${task.idMeal} >Detail</a>
         <a  class="btn btn-primary but" id="${task.idMeal}">Add favorite</a>
         <a href="${task.strYoutube}" class="btn btn-primary youbut">YT</a>
       

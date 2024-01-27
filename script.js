@@ -23,8 +23,8 @@ let sus = []
 let susgeslist = document.querySelector('.sugestionlist')
 let sugestn = document.querySelector('.sugestion')
 document.addEventListener('click', clickhandle);
-/***************************************fetching data from local storage to api************** */
 
+/*****************************sugestion list operation ************** */
 susgeslist.addEventListener('click', function(e) {
     search.value = e.target.innerHTML;
     console.log(e.target.innerHTML)
@@ -35,50 +35,51 @@ susgeslist.addEventListener('click', function(e) {
 
 })
 search.addEventListener('keyup', () => {
-    sugestn.style.opacity = '1';
+        sugestn.style.opacity = '1';
 
-    function domli(task) {
-        const li = document.createElement('li')
-        li.innerHTML = `${ task.strMeal }`
-        susgeslist.append(li)
-    }
-
-    function rendersuslist() {
-        susgeslist.innerHTML = "";
-        for (let i = 0; i < sus.length; i++) {
-            domli(sus[i])
+        function domli(task) {
+            const li = document.createElement('li')
+            li.innerHTML = `${ task.strMeal }`
+            susgeslist.append(li)
         }
-    }
 
-    sugestion(search.value)
-    async function sugestion(i) {
-        const res = await fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${i}`);
-        const data = await res.json();
-        sus = data.meals;
-        rendersuslist();
-
-        if (search.value) {
-            if (sus.length != 0) {
-                sugestn.style.visibility = 'visible'
-            } else {
-                sugestn.style.visibility = 'hidden'
+        function rendersuslist() {
+            susgeslist.innerHTML = "";
+            for (let i = 0; i < sus.length; i++) {
+                domli(sus[i])
             }
-        } else {
-            serc();
-            sugestn.style.visibility = 'hidden'
+        }
+
+        sugestion(search.value)
+        async function sugestion(i) {
+            const res = await fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${i}`);
+            const data = await res.json();
+            sus = data.meals;
+            rendersuslist();
+
+            if (search.value) {
+                if (sus.length != 0) {
+                    sugestn.style.visibility = 'visible'
+                } else {
+                    sugestn.style.visibility = 'hidden'
+                }
+            } else {
+                serc();
+                sugestn.style.visibility = 'hidden'
+
+            }
 
         }
 
-    }
-
-})
-
+    })
+    /***************************************fetching data from local storage to api************** */
 async function fetching(i) {
     const res = await fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${products[i]}`);
     const data = await res.json();
     favlistitem.push(data.meals[0]);
 }
 /************************** end fetching data from local storage to api************** */
+/**********************************Local storage operation************************/
 function addProduct(e) {
 
     if (localStorage.getItem('products')) {
@@ -93,7 +94,7 @@ function addProduct(e) {
     }
     localStorage.setItem('products', JSON.stringify(products));
 }
-
+/*******************************Local storage data delete********************** */
 function deleteaddProduct(e) {
 
     if (localStorage.getItem('products')) {
@@ -104,6 +105,8 @@ function deleteaddProduct(e) {
     }
 
 }
+/**********************************Local storage operation************************/
+/**********************************page loading property************** */
 window.addEventListener('load', (e) => {
     addProduct(e);
     for (i = 0; i < products.length; i++) {
@@ -111,6 +114,7 @@ window.addEventListener('load', (e) => {
     }
     favc.innerHTML = products.length;
 });
+
 async function currentfetch(e) {
     const data = await fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${e.target.id}`);
     const res = await data.json();
@@ -120,9 +124,9 @@ async function currentfetch(e) {
 
 }
 document.addEventListener("click", (e) => {
-    console.log(e.target)
-})
-
+        console.log(e.target)
+    })
+    /*********************************Click handle of page element*************** */
 function clickhandle(e) {
     if (e.target.className ==
         "btn btn-primary but") {
@@ -157,14 +161,14 @@ function clickhandle(e) {
         console.log(favlistitem.length)
     }
 }
+/************************************product detail fetching from api***************** */
 async function fetchdetail(e) {
     const data = await fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${e.target.id}`);
     const res = await data.json();
     detaildom(res.meals[0]);
 }
-
+/******************************detail page operation******************** */
 function detaildom(task) {
-    // itemdetail.classList.add('detail');
     pop.innerHTML = `<i class=" details material-icons " id="closed">close</i><img src=${task.strMealThumb
     } alt="">
     <div id="dheading">
@@ -193,16 +197,7 @@ function detaildom(task) {
 
 }
 
-
-//async function fetching() {
-//    const data = await fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${products[1]}`);
-//    const res = await data.json();
-//    favlistitem.push(res);
-//}
-
-
-
-
+/****************************delete item from favlist */
 function deleteTask(taskId) {
     const newtask = fav.filter((meals) => {
         return meals.idMeal !== taskId;
@@ -282,12 +277,13 @@ function closefav() {
     favi.style = 'visibility:visible;right:-0px;width:0';
 }
 /*********************************The end *****************************/
+/***************************fetch mealdb meal by user input*************** */
 async function fetchmeal() {
     const data = await fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${search.value}`);
     const res = await data.json();
     iteamlist = res.meals;
     console.log(iteamlist)
-
+        /********************************main page rendering*************** */
     function addtasksTodom(task) {
         const mealiitem = document.createElement('div');
         mealiitem.classList.add('card', 'm-2');
